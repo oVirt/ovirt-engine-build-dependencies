@@ -20,18 +20,16 @@ Requires:	javapackages-filesystem
 
 
 %prep
-%setup -c -q
-tar xf %{SOURCE0}
+%setup -c -q -T
 
 
 %install
 install -d -m 755  %{buildroot}%{_datadir}/%{name}/repository
-tar -xf %{SOURCE0} -C %{buildroot}%{_datadir}/%{name}/repository
+tar -xf %{SOURCE0} -C %{buildroot}%{_datadir}/%{name}
 
 
 %files
-%license LICENSE
-%dir %{_datadir}/%{name}
+%{_datadir}/%{name}
 
 
 %changelog
