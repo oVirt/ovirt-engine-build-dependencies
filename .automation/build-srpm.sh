@@ -1,6 +1,11 @@
 #!/bin/bash -xe
 
-# Either a branch name or a specific tag
+# Package version is static and should be aligned with engine version that is
+# used to build maven cache
+PKG_VERSION="4.5.3"
+
+# Either a branch name or a specific tag in ovirt-engine project for which
+# the maven cache is built
 ENGINE_VERSION="master"
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
@@ -18,12 +23,8 @@ git clone https://github.com/oVirt/ovirt-engine
 cd ovirt-engine
 git checkout ${ENGINE_VERSION}
 
-# Prepare the version string (with support for SNAPSHOT versioning)
-GIT_HASH=$(git rev-list HEAD | wc -l)
-VERSION=$(mvn help:evaluate  -q -DforceStdout -Dexpression=project.version)
-VERSION=${VERSION/-SNAPSHOT/-0.${GIT_HASH}.$(date +%04Y%02m%02d%02H%02M)}
-IFS='-' read -ra VERSION <<< "$VERSION"
-RELEASE=${VERSION[1]-1}
+# Prepare the release, which contain git hash of engine commit and current date
+PKG_RELEASE="0.$(git rev-list HEAD | wc -l).$(date +%04Y%02m%02d%02H%02M)"
 
 # Build engine project to download all dependencies to the local maven repo
 mvn \
@@ -59,12 +60,12 @@ rm -rf repository/org/ovirt/engine/ovirt-findbugs-filters
 rm -rf repository/org/ovirt/engine/root
 rm -rf repository/org/ovirt/engine/ui
 
-tar czf rpmbuild/SOURCES/ovirt-engine-build-dependencies-$VERSION.tar.gz repository
+tar czf rpmbuild/SOURCES/ovirt-engine-build-dependencies-${PKG_VERSION}.tar.gz repository
 
 # Set version and release
 sed \
-    -e "s|@VERSION@|${VERSION}|g" \
-    -e "s|@RELEASE@|${RELEASE}|g" \
+    -e "s|@VERSION@|${PKG_VERSION}|g" \
+    -e "s|@RELEASE@|${PKG_RELEASE}|g" \
     < ovirt-engine-build-dependencies.spec.in \
     > ovirt-engine-build-dependencies.spec
 
