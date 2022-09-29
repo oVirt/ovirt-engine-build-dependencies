@@ -15,6 +15,8 @@ org.ovirt.engine.api:metamodel-server:1.3.10
 org.ovirt.engine.api:metamodel-runtime:1.3.10
 org.ovirt.engine.api:metamodel-tool:1.3.10
 org.ovirt.engine.api:model:4.5.12
+org.ovirt.engine.api:model:4.5.12:jar:sources
+org.ovirt.engine.api:model:4.5.12:jar:javadoc
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
