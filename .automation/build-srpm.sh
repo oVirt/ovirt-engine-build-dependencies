@@ -8,6 +8,15 @@ PKG_VERSION="4.5.3"
 # the maven cache is built
 ENGINE_VERSION="master"
 
+# Additional dependencies, which are going to be added to engine and which need
+# to be included in ovirt-engine-build-dependencies, so proper build can pass
+ADDITIONAL_DEPENDENCIES="
+org.ovirt.engine.api:metamodel-server:1.3.10
+org.ovirt.engine.api:metamodel-runtime:1.3.10
+org.ovirt.engine.api:metamodel-tool:1.3.10
+org.ovirt.engine.api:model:4.5.12
+"
+
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
 ARTIFACTS_DIR=${1:-exported-artifacts}
 
@@ -36,6 +45,11 @@ mvn \
     -Dgwt.compiler.localWorkers=1 \
     -Dgwt.jvmArgs='-Xms1G -Xmx3G' \
     -Dmaven.repo.local=${LOCAL_MAVEN_REPO}
+
+# Install additional dependencies
+for dep in ${ADDITIONAL_DEPENDENCIES} ; do
+    mvn dependency:get -Dartifact=${dep} -Dmaven.repo.local=${LOCAL_MAVEN_REPO}
+done
 
 # Archive the fetched repository without artifacts produced as a part of engine build
 cd ${LOCAL_MAVEN_REPO}/..
