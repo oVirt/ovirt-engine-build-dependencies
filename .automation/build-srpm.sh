@@ -11,12 +11,6 @@ ENGINE_VERSION="master"
 # Additional dependencies, which are going to be added to engine and which need
 # to be included in ovirt-engine-build-dependencies, so proper build can pass
 ADDITIONAL_DEPENDENCIES="
-org.ovirt.engine.api:metamodel-server:1.3.10
-org.ovirt.engine.api:metamodel-runtime:1.3.10
-org.ovirt.engine.api:metamodel-tool:1.3.10
-org.ovirt.engine.api:model:4.5.12
-org.ovirt.engine.api:model:4.5.12:jar:sources
-org.ovirt.engine.api:model:4.5.12:jar:javadoc
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
@@ -35,7 +29,8 @@ cd ovirt-engine
 git checkout ${ENGINE_VERSION}
 
 # Prepare the release, which contain git hash of engine commit and current date
-PKG_RELEASE="0.$(git rev-list HEAD | wc -l).$(date +%04Y%02m%02d%02H%02M)"
+#PKG_RELEASE="0.$(git rev-list HEAD | wc -l).$(date +%04Y%02m%02d%02H%02M)"
+PKG_RELEASE="1"
 
 # Build engine project to download all dependencies to the local maven repo
 mvn \
