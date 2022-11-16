@@ -11,6 +11,8 @@ ENGINE_VERSION="master"
 # Additional dependencies, which are going to be added to engine and which need
 # to be included in ovirt-engine-build-dependencies, so proper build can pass
 ADDITIONAL_DEPENDENCIES="
+org.apache.sshd:sshd-common:2.9.2
+org.apache.sshd:sshd-core:2.9.2
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
