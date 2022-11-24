@@ -1,36 +1,25 @@
 name: build
 on:
   push:
-    branches: [main]
+    branches: [ovirt-engine-build-dependencies-4.5.3.z]
   pull_request:
-    branches: [main]
+    branches: [ovirt-engine-build-dependencies-4.5.3.z]
   workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: centos-stream-8
-            shortcut: cs8
-            container-name: el8stream
-          - name: centos-stream-9
-            shortcut: cs9
-            container-name: el9stream
-
-    name: ${{ matrix.name }}
+    name: centos-stream-8
 
     env:
       ARTIFACTS_DIR: exported-artifacts
 
     container:
-      image: quay.io/ovirt/buildcontainer:${{ matrix.container-name }}
+      image: quay.io/ovirt/buildcontainer:el8stream
 
     steps:
     - name: Checkout sources
-      uses: actions/checkout@v2
+      uses: ovirt/checkout-action@main
 
     - name: Perform build
       run: |
