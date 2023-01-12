@@ -11,6 +11,7 @@ ENGINE_VERSION="master"
 # Additional dependencies, which are going to be added to engine and which need
 # to be included in ovirt-engine-build-dependencies, so proper build can pass
 ADDITIONAL_DEPENDENCIES="
+org.postgresql:postgresql:42.2.27
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
