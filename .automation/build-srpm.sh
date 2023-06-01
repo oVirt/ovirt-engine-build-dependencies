@@ -16,7 +16,7 @@ org.yaml:snakeyaml:1.33
 com.fasterxml.jackson.core:jackson-annotations:2.12.7
 com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.12.7
 com.fasterxml.jackson.core:jackson-core:2.12.7
-com.fasterxml.jackson.core:jackson-databind:2.12.7
+com.fasterxml.jackson.core:jackson-databind:2.12.7.1
 com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.7
 org.springframework:spring-aop:5.3.27
 org.springframework:spring-beans:5.3.27
