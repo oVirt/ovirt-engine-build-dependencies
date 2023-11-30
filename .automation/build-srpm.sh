@@ -11,22 +11,6 @@ ENGINE_VERSION="master"
 # Additional dependencies, which are going to be added to engine and which need
 # to be included in ovirt-engine-build-dependencies, so proper build can pass
 ADDITIONAL_DEPENDENCIES="
-org.postgresql:postgresql:42.2.27
-org.yaml:snakeyaml:1.33
-com.fasterxml.jackson.core:jackson-annotations:2.12.7
-com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:2.12.7
-com.fasterxml.jackson.core:jackson-core:2.12.7
-com.fasterxml.jackson.core:jackson-databind:2.12.7.1
-com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.7
-org.springframework:spring-aop:5.3.27
-org.springframework:spring-beans:5.3.27
-org.springframework:spring-core:5.3.27
-org.springframework:spring-expression:5.3.27
-org.springframework:spring-instrument:5.3.27
-org.springframework:spring-jdbc:5.3.27
-org.springframework:spring-context:5.3.27
-org.springframework:spring-tx:5.3.27
-org.springframework:spring-test:5.3.27
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
@@ -49,8 +33,8 @@ git config --global --add safe.directory $(pwd)
 git checkout ${ENGINE_VERSION}
 
 # Prepare the release, which contain git hash of engine commit and current date
-PKG_RELEASE="0.$(date +%04Y%02m%02d%02H%02M).git$(git rev-parse --short HEAD)"
-#PKG_RELEASE="1"
+#PKG_RELEASE="0.$(date +%04Y%02m%02d%02H%02M).git$(git rev-parse --short HEAD)"
+PKG_RELEASE="1"
 
 # Build engine project to download all dependencies to the local maven repo
 mvn \

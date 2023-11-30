@@ -33,6 +33,9 @@ tar -xf %{SOURCE0} -C %{buildroot}%{_datadir}/%{name}
 
 
 %changelog
+* Thu Nov 30 2022 Martin Perina <mperina@redhat.com> - 4.5.5-1
+- Package dependencies for ovirt-engine 4.5.5
+
 * Thu Nov 24 2022 Martin Perina <mperina@redhat.com> - 4.5.4-1
 - Package dependencies for ovirt-engine 4.5.4
 
