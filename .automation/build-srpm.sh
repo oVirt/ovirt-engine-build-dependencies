@@ -12,6 +12,7 @@ ENGINE_VERSION="master"
 # to be included in ovirt-engine-build-dependencies, so proper build can pass
 ADDITIONAL_DEPENDENCIES="
 com.puppycrawl.tools:checkstyle:10.20.0
+io.bit3:jsass:5.11.1
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
