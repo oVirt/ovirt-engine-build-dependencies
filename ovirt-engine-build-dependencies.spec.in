@@ -11,6 +11,7 @@ BuildArch:	noarch
 
 BuildRequires:	tar
 BuildRequires:	maven
+BuildRequires:	maven-openjdk11
 BuildRequires:	java-11-openjdk-devel
 
 Requires:	javapackages-filesystem
