@@ -13,6 +13,12 @@ ENGINE_VERSION="master"
 ADDITIONAL_DEPENDENCIES="
 com.puppycrawl.tools:checkstyle:10.20.0
 io.bit3:jsass:5.11.1
+org.codehaus.mojo:gwt-maven-plugin:2.10.0
+org.gwtproject:gwt:2.12.1:pom
+org.gwtproject:gwt-user:2.12.1
+org.gwtproject:gwt-dev:2.12.1
+org.gwtproject:gwt-servlet:2.12.1
+org.gwtproject:gwt-codeserver:2.12.1
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
