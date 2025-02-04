@@ -15,6 +15,10 @@ com.puppycrawl.tools:checkstyle:10.20.0
 io.bit3:jsass:5.11.1
 "
 
+ADDITIONAL_INSTALLED_DEPENDENCIES="
+ovirt-engine-api-model/model
+"
+
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
 ARTIFACTS_DIR=${1:-exported-artifacts}
 
@@ -45,8 +49,9 @@ cd ${LOCAL_MAVEN_REPO}/..
 
 # Save additional deps in a file
 echo ${ADDITIONAL_DEPENDENCIES} > ADDITIONAL_DEPENDENCIES
+echo ${ADDITIONAL_INSTALLED_DEPENDENCIES} > ADDITIONAL_INSTALLED_DEPENDENCIES
 
-tar czf rpmbuild/SOURCES/ovirt-engine-build-dependencies-${PKG_VERSION}.tar.gz ADDITIONAL_DEPENDENCIES repository ovirt-engine
+tar czf rpmbuild/SOURCES/ovirt-engine-build-dependencies-${PKG_VERSION}.tar.gz ADDITIONAL_DEPENDENCIES ADDITIONAL_INSTALLED_DEPENDENCIES repository ovirt-engine
 
 # Set version and release
 sed \

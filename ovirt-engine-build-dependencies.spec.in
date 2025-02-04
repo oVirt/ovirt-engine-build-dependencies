@@ -13,6 +13,7 @@ BuildRequires:	tar
 BuildRequires:	maven
 BuildRequires:	maven-openjdk11
 BuildRequires:	java-11-openjdk-devel
+BuildRequires:  ovirt-engine-api-model
 
 Requires:	javapackages-filesystem
 
@@ -27,6 +28,11 @@ Requires:	javapackages-filesystem
 
 %build
 %global _repository %{_builddir}/%{name}-%{version}/repository
+
+cd %{_builddir}/%{name}-%{version}
+for dep in $(cat ADDITIONAL_INSTALLED_DEPENDENCIES); do
+    mvn install:install-file -Dfile=/usr/share/java/${dep}.jar -DpomFile=/usr/share/maven-poms/${dep}.pom -Dmaven.repo.local=%{_repository}
+done
 
 # Build engine project to download all dependencies to the local maven repo
 cd %{_builddir}/%{name}-%{version}/ovirt-engine
