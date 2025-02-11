@@ -40,13 +40,46 @@ PKG_RELEASE="0.$(date +%04Y%02m%02d%02H%02M).git$(git rev-parse --short HEAD)"
 # Set the location of the JDK that will be used for compilation:
 export JAVA_HOME="${JAVA_HOME:=/usr/lib/jvm/java-11}"
 
+# Build engine project to download all dependencies to the local maven repo
+mvn \
+    clean \
+    install \
+    -P gwt-admin \
+    --no-transfer-progress \
+    -Dgwt.userAgent=gecko1_8 \
+    -Dgwt.compiler.localWorkers=1 \
+    -Dgwt.jvmArgs='-Xms1G -Xmx3G' \
+    -Dmaven.repo.local=${LOCAL_MAVEN_REPO}
+
+# Install additional dependencies
+for dep in ${ADDITIONAL_DEPENDENCIES} ; do
+    mvn dependency:get -Dartifact=${dep} -Dmaven.repo.local=${LOCAL_MAVEN_REPO}
+done
+
 # Archive the fetched repository without artifacts produced as a part of engine build
 cd ${LOCAL_MAVEN_REPO}/..
 
-# Save additional deps in a file
-echo ${ADDITIONAL_DEPENDENCIES} > ADDITIONAL_DEPENDENCIES
+rm -rf repository/org/ovirt/engine/api/common-parent
+rm -rf repository/org/ovirt/engine/api/interface
+rm -rf repository/org/ovirt/engine/api/interface-common-jaxrs
+rm -rf repository/org/ovirt/engine/api/restapi-apidoc
+rm -rf repository/org/ovirt/engine/api/restapi-definition
+rm -rf repository/org/ovirt/engine/api/restapi-jaxrs
+rm -rf repository/org/ovirt/engine/api/restapi-parent
+rm -rf repository/org/ovirt/engine/api/restapi-types
+rm -rf repository/org/ovirt/engine/api/restapi-webapp
+rm -rf repository/org/ovirt/engine/build-tools-root
+rm -rf repository/org/ovirt/engine/checkstyles
+rm -rf repository/org/ovirt/engine/core
+rm -rf repository/org/ovirt/engine/engine-server-ear
+rm -rf repository/org/ovirt/engine/extension
+rm -rf repository/org/ovirt/engine/make
+rm -rf repository/org/ovirt/engine/ovirt-checkstyle-extension
+rm -rf repository/org/ovirt/engine/ovirt-findbugs-filters
+rm -rf repository/org/ovirt/engine/root
+rm -rf repository/org/ovirt/engine/ui
 
-tar czf rpmbuild/SOURCES/ovirt-engine-build-dependencies-${PKG_VERSION}.tar.gz ADDITIONAL_DEPENDENCIES repository ovirt-engine
+tar czf rpmbuild/SOURCES/ovirt-engine-build-dependencies-${PKG_VERSION}.tar.gz repository
 
 # Set version and release
 sed \

@@ -12,7 +12,6 @@ BuildArch:	noarch
 BuildRequires:	tar
 BuildRequires:	maven
 BuildRequires:	maven-openjdk11
-BuildRequires:	java-11-openjdk-devel
 
 Requires:	javapackages-filesystem
 
@@ -22,54 +21,12 @@ Requires:	javapackages-filesystem
 
 
 %prep
-%setup -c -q
-
-
-%build
-%global _repository %{_builddir}/%{name}-%{version}/repository
-
-# Build engine project to download all dependencies to the local maven repo
-cd %{_builddir}/%{name}-%{version}/ovirt-engine
-mvn \
-    clean \
-    install \
-    -P gwt-admin \
-    --no-transfer-progress \
-    -Dgwt.userAgent=gecko1_8 \
-    -Dgwt.compiler.localWorkers=1 \
-    -Dgwt.jvmArgs='-Xms1G -Xmx3G' \
-    -Dmaven.repo.local=%{_repository}
-
-# Install additional dependencies
-cd %{_builddir}/%{name}-%{version}
-for dep in $(cat ADDITIONAL_DEPENDENCIES); do
-    mvn dependency:get -Dartifact=${dep} -Dmaven.repo.local=%{_repository}
-done
-
-rm -rf %{_repository}/org/ovirt/engine/api/common-parent
-rm -rf %{_repository}/org/ovirt/engine/api/interface
-rm -rf %{_repository}/org/ovirt/engine/api/interface-common-jaxrs
-rm -rf %{_repository}/org/ovirt/engine/api/restapi-apidoc
-rm -rf %{_repository}/org/ovirt/engine/api/restapi-definition
-rm -rf %{_repository}/org/ovirt/engine/api/restapi-jaxrs
-rm -rf %{_repository}/org/ovirt/engine/api/restapi-parent
-rm -rf %{_repository}/org/ovirt/engine/api/restapi-types
-rm -rf %{_repository}/org/ovirt/engine/api/restapi-webapp
-rm -rf %{_repository}/org/ovirt/engine/build-tools-root
-rm -rf %{_repository}/org/ovirt/engine/checkstyles
-rm -rf %{_repository}/org/ovirt/engine/core
-rm -rf %{_repository}/org/ovirt/engine/engine-server-ear
-rm -rf %{_repository}/org/ovirt/engine/extension
-rm -rf %{_repository}/org/ovirt/engine/make
-rm -rf %{_repository}/org/ovirt/engine/ovirt-checkstyle-extension
-rm -rf %{_repository}/org/ovirt/engine/ovirt-findbugs-filters
-rm -rf %{_repository}/org/ovirt/engine/root
-rm -rf %{_repository}/org/ovirt/engine/ui
+%setup -c -q -T
 
 
 %install
-install -d -m 755 %{buildroot}%{_datadir}/%{name}
-cp -a repository %{buildroot}%{_datadir}/%{name}/
+install -d -m 755 %{buildroot}%{_datadir}/%{name}/repository
+tar -xf %{SOURCE0} -C %{buildroot}%{_datadir}/%{name}
 
 
 %files
