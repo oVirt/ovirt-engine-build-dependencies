@@ -19,6 +19,20 @@ org.gwtproject:gwt-user:2.12.1
 org.gwtproject:gwt-dev:2.12.1
 org.gwtproject:gwt-servlet:2.12.1
 org.gwtproject:gwt-codeserver:2.12.1
+org.postgresql:postgresql:42.7.5
+org.apache.sshd:sshd-common:2.14.0
+org.hibernate.validator:hibernate-validator:6.2.5.Final
+org.infinispan:infinispan-core:14.0.34.Final
+org.springframework:spring-aop:5.3.39
+org.springframework:spring-beans:5.3.39
+org.springframework:spring-core:5.3.39
+org.springframework:spring-expression:5.3.39
+org.springframework:spring-instrument:5.3.39
+org.springframework:spring-jdbc:5.3.39
+org.springframework:spring-context:5.3.39
+org.springframework:spring-tx:5.3.39
+org.springframework:spring-test:5.3.39
+org.yaml:snakeyaml:2.4
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
