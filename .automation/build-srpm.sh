@@ -21,6 +21,7 @@ org.gwtproject:gwt-servlet:2.12.1
 org.gwtproject:gwt-codeserver:2.12.1
 org.postgresql:postgresql:42.7.5
 org.apache.sshd:sshd-common:2.14.0
+org.apache.sshd:sshd-core:2.14.0
 org.hibernate.validator:hibernate-validator:6.2.5.Final
 org.infinispan:infinispan-core:14.0.34.Final
 org.springframework:spring-aop:5.3.39
