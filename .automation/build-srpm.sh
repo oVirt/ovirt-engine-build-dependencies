@@ -34,6 +34,9 @@ org.springframework:spring-context:5.3.39
 org.springframework:spring-tx:5.3.39
 org.springframework:spring-test:5.3.39
 org.yaml:snakeyaml:2.4
+org.ovirt.engine.api:model:4.6.1-SNAPSHOT
+org.ovirt.engine.api:model:4.6.1-SNAPSHOT:jar:sources
+org.ovirt.engine.api:model:4.6.1-SNAPSHOT:jar:javadoc
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
