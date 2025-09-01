@@ -61,9 +61,6 @@ git config --global --add safe.directory $(pwd)
 PKG_RELEASE="0.$(date +%04Y%02m%02d%02H%02M).git$(git rev-parse --short HEAD)"
 #PKG_RELEASE="1"
 
-# Set the location of the JDK that will be used for compilation:
-export JAVA_HOME="${JAVA_HOME:=/usr/lib/jvm/java-11}"
-
 # Build engine project to download all dependencies to the local maven repo
 mvn \
     clean \
