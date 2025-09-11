@@ -6,7 +6,7 @@ PKG_VERSION="4.5.7"
 
 # Either a branch name or a specific tag in ovirt-engine project for which
 # the maven cache is built
-ENGINE_VERSION="master"
+ENGINE_VERSION="java_21"
 
 # Additional dependencies, which are going to be added to engine and which need
 # to be included in ovirt-engine-build-dependencies, so proper build can pass
@@ -43,7 +43,8 @@ java -version
 echo "--------------------------------"
 
 # Fetch required engine version
-git clone --depth=1 --branch=${ENGINE_VERSION} https://github.com/oVirt/ovirt-engine
+# git clone --depth=1 --branch=${ENGINE_VERSION} https://github.com/oVirt/ovirt-engine
+git clone --depth=1 --branch=${ENGINE_VERSION} https://github.com/teamdotblue/ovirt-engine
 cd ovirt-engine
 
 # Mark current directory as safe for git to be able to execute git commands
@@ -58,7 +59,6 @@ mvn \
     clean \
     install \
     -P gwt-admin \
-    --no-transfer-progress \
     -Dgwt.userAgent=gecko1_8 \
     -Dgwt.compiler.localWorkers=1 \
     -Dgwt.jvmArgs='-Xms1G -Xmx3G' \
