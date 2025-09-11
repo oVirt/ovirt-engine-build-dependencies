@@ -50,6 +50,14 @@ LOCAL_MAVEN_REPO="$(pwd)/repository"
 [ -d ${ARTIFACTS_DIR} ] || mkdir -p ${ARTIFACTS_DIR}
 [ -d rpmbuild/SOURCES ] || mkdir -p rpmbuild/SOURCES
 
+# Use java 21 for build
+dnf install maven-openjdk21 -y
+
+echo "--------------------------------"
+mvn -version
+java -version
+echo "--------------------------------"
+
 # Fetch required engine version
 git clone --depth=1 --branch=${ENGINE_VERSION} https://github.com/oVirt/ovirt-engine
 cd ovirt-engine
