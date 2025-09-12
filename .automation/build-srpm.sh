@@ -11,32 +11,17 @@ ENGINE_VERSION="master"
 # Additional dependencies, which are going to be added to engine and which need
 # to be included in ovirt-engine-build-dependencies, so proper build can pass
 ADDITIONAL_DEPENDENCIES="
-com.puppycrawl.tools:checkstyle:10.20.0
-io.bit3:jsass:5.11.1
-org.codehaus.mojo:gwt-maven-plugin:2.10.0
-org.gwtproject:gwt:2.12.1:pom
-org.gwtproject:gwt-user:2.12.1
-org.gwtproject:gwt-dev:2.12.1
-org.gwtproject:gwt-servlet:2.12.1
-org.gwtproject:gwt-codeserver:2.12.1
-org.postgresql:postgresql:42.7.5
-org.apache.sshd:sshd-common:2.14.0
-org.apache.sshd:sshd-core:2.14.0
-org.hibernate.validator:hibernate-validator:6.2.5.Final
-org.infinispan:infinispan-core:14.0.34.Final
-org.springframework:spring-aop:5.3.39
-org.springframework:spring-beans:5.3.39
-org.springframework:spring-core:5.3.39
-org.springframework:spring-expression:5.3.39
-org.springframework:spring-instrument:5.3.39
-org.springframework:spring-jdbc:5.3.39
-org.springframework:spring-context:5.3.39
-org.springframework:spring-tx:5.3.39
-org.springframework:spring-test:5.3.39
-org.yaml:snakeyaml:2.4
-org.ovirt.engine.api:model:4.6.1-SNAPSHOT
-org.ovirt.engine.api:model:4.6.1-SNAPSHOT:jar:sources
-org.ovirt.engine.api:model:4.6.1-SNAPSHOT:jar:javadoc
+org.assertj:assertj-core:3.27.3
+org.junit.jupiter:junit-jupiter-api:5.13.4
+org.junit.jupiter:junit-jupiter-engine:5.13.4
+org.junit.jupiter:junit-jupiter-params:5.13.4
+org.junit.platform:junit-platform-commons:1.13.4
+org.junit.platform:junit-platform-engine:1.13.4
+org.junit.platform:junit-platform-launcher:1.13.4
+org.apache.maven.plugins:maven-dependency-plugin:3.8.1
+org.apache.maven.plugins:maven-surefire-plugin:3.5.3
+org.apache.maven.plugins:maven-war-plugin:3.4.0
+org.codehaus.plexus:plexus-utils:1.1
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
