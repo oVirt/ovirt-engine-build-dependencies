@@ -22,6 +22,10 @@ org.apache.maven.plugins:maven-dependency-plugin:3.8.1
 org.apache.maven.plugins:maven-surefire-plugin:3.5.3
 org.apache.maven.plugins:maven-war-plugin:3.4.0
 org.codehaus.plexus:plexus-utils:1.1
+com.ongres.stringprep:saslprep:1.1
+com.ongres.stringprep:stringprep:1.1
+com.ongres.scram:common:2.1
+com.ongres.scram:client:2.1
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
