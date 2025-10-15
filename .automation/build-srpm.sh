@@ -26,6 +26,10 @@ com.ongres.stringprep:saslprep:1.1
 com.ongres.stringprep:stringprep:1.1
 com.ongres.scram:common:2.1
 com.ongres.scram:client:2.1
+commons-codec:commons-codec:1.17.1
+commons-io:commons-io:2.16.1
+org.apache.commons:commons-compress:1.27.1
+org.apache.commons:commons-lang3:3.14.0
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
