@@ -11,25 +11,6 @@ ENGINE_VERSION="master"
 # Additional dependencies, which are going to be added to engine and which need
 # to be included in ovirt-engine-build-dependencies, so proper build can pass
 ADDITIONAL_DEPENDENCIES="
-org.assertj:assertj-core:3.27.3
-org.junit.jupiter:junit-jupiter-api:5.13.4
-org.junit.jupiter:junit-jupiter-engine:5.13.4
-org.junit.jupiter:junit-jupiter-params:5.13.4
-org.junit.platform:junit-platform-commons:1.13.4
-org.junit.platform:junit-platform-engine:1.13.4
-org.junit.platform:junit-platform-launcher:1.13.4
-org.apache.maven.plugins:maven-dependency-plugin:3.8.1
-org.apache.maven.plugins:maven-surefire-plugin:3.5.3
-org.apache.maven.plugins:maven-war-plugin:3.4.0
-org.codehaus.plexus:plexus-utils:1.1
-com.ongres.stringprep:saslprep:1.1
-com.ongres.stringprep:stringprep:1.1
-com.ongres.scram:common:2.1
-com.ongres.scram:client:2.1
-commons-codec:commons-codec:1.15
-commons-io:commons-io:2.8.0
-org.apache.commons:commons-compress:1.21
-org.apache.commons:commons-lang3:3.12.0
 "
 
 # Directory, where build artifacts will be stored, should be passed as the 1st parameter
@@ -59,8 +40,8 @@ cd ovirt-engine
 git config --global --add safe.directory $(pwd)
 
 # Prepare the release, which contain git hash of engine commit and current date
-PKG_RELEASE="0.$(date +%04Y%02m%02d%02H%02M).git$(git rev-parse --short HEAD)"
-#PKG_RELEASE="1"
+#PKG_RELEASE="0.$(date +%04Y%02m%02d%02H%02M).git$(git rev-parse --short HEAD)"
+PKG_RELEASE="1"
 
 # Build engine project to download all dependencies to the local maven repo
 mvn \
