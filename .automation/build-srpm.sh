@@ -2,7 +2,7 @@
 
 # Package version is static and should be aligned with engine version that is
 # used to build maven cache
-PKG_VERSION="4.5.7"
+PKG_VERSION="4.5.8"
 
 # Either a branch name or a specific tag in ovirt-engine project for which
 # the maven cache is built
@@ -40,8 +40,8 @@ cd ovirt-engine
 git config --global --add safe.directory $(pwd)
 
 # Prepare the release, which contain git hash of engine commit and current date
-#PKG_RELEASE="0.$(date +%04Y%02m%02d%02H%02M).git$(git rev-parse --short HEAD)"
-PKG_RELEASE="1"
+PKG_RELEASE="0.$(date +%04Y%02m%02d%02H%02M).git$(git rev-parse --short HEAD)"
+#PKG_RELEASE="1"
 
 # Build engine project to download all dependencies to the local maven repo
 mvn \
