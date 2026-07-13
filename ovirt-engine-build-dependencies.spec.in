@@ -1,6 +1,6 @@
 Name:		ovirt-engine-build-dependencies
 Version:	@VERSION@
-Release:	@RELEASE@%{?dist}
+Release:	@RELEASE@%{?release_suffix}%{?dist}
 Summary:	oVirt Engine Build Dependencies
 Group:		%{ovirt_product_group}
 License:	ASL 2.0
